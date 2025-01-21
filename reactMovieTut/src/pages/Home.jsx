@@ -1,5 +1,6 @@
 import MovieCard from "../components/MovieCard"
 import { useState } from "react";
+import "../css/Home.css"
 {/*Home page, display multiple movies, search form to search for movies*/}
 
 function Home() {

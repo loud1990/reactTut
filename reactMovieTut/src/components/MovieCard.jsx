@@ -1,5 +1,7 @@
 {/* Here we will write the code for displaying a Movie Card*/}
 
+import "../css/MovieCard.css"
+
 function MovieCard({movie}){
 
     function onFavoriteClick() {

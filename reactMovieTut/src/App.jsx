@@ -1,24 +1,22 @@
-import './App.css'
+import './css/App.css'
 import MovieCard from './components/MovieCard'
 import Home from './pages/Home';
+import {Routes, Route} from "react-router-dom"
+import Favorites from './pages/Favorites';
+import NavBar from './components/NavBar';
 
 function App() {
-  const movieNumber = 1;
-
-  
-  return (
-    <>  
-    <Home />
-    </>
-  );
-}
-
-function Text({display}) { {/*define the component in a function here, then in the function above, use the component with the <Text /> tag */}
   return (
     <div>
-      <p>{display}</p>
-    </div>
-  )
+      <NavBar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
+      </div>
+  );
 }
 
 export default App
