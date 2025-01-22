@@ -2,7 +2,7 @@
     that you can keep all the networking operations or stuff related 
     to the API in a separate file and find it easily*/}
 
-const API_KEY = "361cff4550d9e8e57174555d2b4aa5e6"
+const API_KEY = ""
 const BASE_URL = "https://api.themoviedb.org/3"
 
 export const getPopularMovies = async () => {
