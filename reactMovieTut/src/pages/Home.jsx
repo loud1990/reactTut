@@ -1,23 +1,36 @@
 import MovieCard from "../components/MovieCard"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/Home.css"
-{/*Home page, display multiple movies, search form to search for movies*/}
 
 function Home() {
     const [ searchQuery, setSearchQuery] = useState(""); 
-    {/*searchQuery is the state, setSearchQuery is the function that sets the state , what is in useState is the default value*/}
-  
-    const movies = [
-        {id:1, title: "John Wick", release_date: "2020"},
-        {id:2, title:"Terminator", release_date:"1999"},
-        {id:3, title: "The Matrix", release_date: "1998"},
-    ];
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadPopularMovies = async () => {
+            try {
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            }
+            catch (err) {
+                console.log(err);
+                setError("Failed to load movies...");
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+
+        loadPopularMovies()
+    }, [])
 
     const handleSearch = (e) => {
-        e.preventDefault() 
-        {/*above code:prevent the default behavior of refreshing the page, so that our text stays in the box after clicking search button*/}
-        alert(searchQuery)
-        setSearchQuery("")
+        e.preventDefault(); 
+        alert(searchQuery);
+        setSearchQuery("");
     };
 
     return <div className="home">
